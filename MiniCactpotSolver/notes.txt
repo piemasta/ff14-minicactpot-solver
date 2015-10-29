@@ -1,0 +1,96 @@
+﻿
+Functionality
+
+- Predictions
+Users will be able to enter the free spot given to them by the game and have the program select the most strategic tiles to uncover towards
+winning the Cactpot. This algorithm should attempt to either win or disprove the existence of a Cactpot line with as little information as
+possible, so that in the case of an impossible Cactpot a reasonable attempt can be made at another sizeable pot.
+	**Have predictions be disabled by default. Many people will probably just want to see the probabilities associated with their boards.**
++ When cactpot is impossible demonstrate predictions based on plateaus of rewards like 100+ (to recoup MGP cost of ticket) since all
+remaining possibilties will always equally likely within the same line. This can add an element of depth to the raw data.
+
+- Comprehensive, Real-Time Information
+As much information as possible about the probabilities and possible combinations present in a game should be made available to the user. At
+a minimum, it should display probabilities of winning each pot per line once all 4 tiles are uncovered. As a goal, it should display this
+information during the prediction process as each tile (after the first) is uncovered by the user.
+
+- Game Modes
+There will need to be different 'modes' which cater to the different ways a user might utilize this program. As of right now, I only
+see reason for a Standard mode and a Predictive mode. Other ideas include Free or Explore modes, a Simulation mode, and a Versus AI mode.
+
++ Standard Mode - Designed to be run alongside an in-game MiniCactpot ticket. The user will enter up to 4 tiles (1 free + 3 standard)
+and the program will display probability information to help the user select a line. Predictions are disabled (they can be enabled
+at any time).
++ Predictive Mode - Functionally equivalent to Standard Mode except the program will light up a tile for each play (after the first)
+based on its prediction algorithms. This lit tile is the program's suggestion for the next play. Players can feel free to ignore the
+suggestion, and the program will run its next prediction based on the user's play.
++ Free/Explore - Allows users to flip any tile they like to experiment with the probabilities involved. All standard game information
+will be available in real-time.
++ Simulation Mode - Simulates a game of MiniCactpot. The board will flip one tile at random and then let the user flip 3 more before
+having them select a play line. Predictions are permanently enabled for this mode.
++ Versus AI - Compete against the prediction algorithm to win the most MGP from a round of 3 MiniCactpot tickets. The AI plays on a
+separate ticket that is identical to yours, and will light up its selection after the user plays each round. The user will not have
+access to predictions or probability information in this mode.
+	**Code in a secret command that reveals probability information for the user..**
+
+
+
+
+
+
+Error Handling/Recovery
+
+- State Recovery Function
+Failed sanity checks call a recovery method, which gathers the state of the program prior to the failure and reinstantiates using
+values that are known to be good. This method will need to check most, if not all, state values for validity.
+
++ State Logging
+Route program state information through a state log. This can help during debugging as well as make it easier to recover to a
+valid state with 100% confidence.
++ State logs should be updated with every method call, similar to the control stack. With every method call list for all variables
+relevant to program state (including arguments): value upon method entry, value upon method exit**.
+	**This information will inevitably be lost upon unexpected termination, so we will be unable to determine why any troublesome
+	values were bad. Backtrack through the function stack to just before the last user-generated event for the best possible values.**
+
+
+
+Debugging
+
+-DONE- Error Logging
+Eliminate textboxes in favor of outputting error text to an error log text file.
+
+- External Debugger
+Whole screen display of all relevant state variables on one side and the progression of function calls on the other. The program
+would accept the state logs as input and can step back and forth through each control shift. Each function call would highlight the
+variables on the other side that it can change (global scope variables would be noted, or always highlighted) and update them through
+each step.
+
+- Live Debugger
+A live debugger can be worked into the console-like environment already present below the board. This would make it easier to see
+how dynamic user input might be causing problems by showing variable values in real time.
+
+- Collapsable Array Information
+Wherever state information for arrays is displayed, make them collapsable to save screen space.
+
+
+Graphic Design
+
+- More Screenshots
+Use in-game graphic styles for a window border and a close (X) button.
+
+- Mouse Icon
+Capture a nice screenshot of the mouse cursor to use as a custom cursor.
+
+- Decommission Confirm button
+Graphically indicate that the confirm button is out of commission. Use a tape-like texture to partially cover it.
+
+- Console-like Drawer Display
+Display prediction and probability information and accept written user input below the main board in a console-like environment.
+This should give the user the impression of hacking the MiniCactpot game.
+	**This will almost assuredly need to be accompanied by some sort of help file. This file would need to, at a minimum, list the
+	commands necessary to operate each program mode.**
+
++ The game board starts darkened, and lights up when the user enters a command that initiates a game mode.
+(See Functionality - Game Modes)
+
+- Do something with the 'No. 574' label in the top-right corner. This counter serves no purpose in this program.
