@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MiniCactpotSolver
@@ -470,20 +467,7 @@ namespace MiniCactpotSolver
             return payout_chances;
         }
 
-        private void Calculate_Elimination_Yield()
-        {
-            for (int x = 0; x < rowLength; x++)
-            {
-                if (IsTransparent(row[x][0]) && IsTransparent(row[x][1]) && IsTransparent(row[x][2]))
-                {
-                    elim[index[x][0]]++;
-                    elim[index[x][1]]++;
-                    elim[index[x][2]]++;
-                }
-                for (int y = 0; y < 3; y++)
-                    if (!IsEmpty(row[x][y])) elim[index[x][y]] = 0;
-            }
-        }
+        //Yummy broot loops
         private int Calculate_Minipot_Potential(int tile)
         {
             if (grid[tile] != 0) return 0;
@@ -565,6 +549,21 @@ namespace MiniCactpotSolver
 
             return total;
         }
+        private void Calculate_Elimination_Yield()
+        {
+            for (int x = 0; x < rowLength; x++)
+            {
+                if (IsTransparent(row[x][0]) && IsTransparent(row[x][1]) && IsTransparent(row[x][2]))
+                {
+                    elim[index[x][0]]++;
+                    elim[index[x][1]]++;
+                    elim[index[x][2]]++;
+                }
+                for (int y = 0; y < 3; y++)
+                    if (!IsEmpty(row[x][y])) elim[index[x][y]] = 0;
+            }
+        }
+
 
         private bool IsEmpty(int x)
         {
