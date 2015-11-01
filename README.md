@@ -11,13 +11,13 @@ After 4 plays have been entered (the initial number plus 3 user plays) the solve
 ## Controls
 While the mouse is hovering over a play spot:
 
-  ***1-9**    Play number.
+  **1-9**    Play number.
 
-  ***0**      Reset the spot.
+  **0**      Reset the spot.
 
-  ***Enter**  Clear all play spots.
+  **Enter**  Clear all play spots.
 
-  ***Escape** Exit the program.
+  **Escape** Exit the program.
 
 ## Special Features
 
