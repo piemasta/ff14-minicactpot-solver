@@ -14,6 +14,8 @@ While the mouse is hovering over a play spot:
   **1-9:**    Play number.
 
   **0:**      Reset the spot.
+  
+Any time:
 
   **Enter:**  Clear all play spots.
 
@@ -32,6 +34,8 @@ The algorithm responsible for determining play suggestions when chasing the Cact
 
 ## Notes
 
+* Sometimes the solver will highlight multiple play spots during a single round. All suggestions in the set can be considered to be equivalent with respect to payout chances.
+
 * The solver will silently prevent you from making illegal moves, or entering more than 4 total plays.
 
-* Sometimes the solver will highlight multiple play spots during a single round. All suggestions in the set can be considered to be equivalent with respect to payout chances.
+* You can 'hot swap' numbers by entering a valid play on top of another numbered spot, without needing to first clear the spot.
