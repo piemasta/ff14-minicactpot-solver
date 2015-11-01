@@ -20,7 +20,7 @@ The solver receives input via hovering the mouse over a play spot and typing a n
 
 Use **0** to reset a play spot.
 
-Press the **Space bar** to reset all play spots.
+Press the **Enter** to reset all play spots.
 
 Press **Escape** to exit the program.
 
