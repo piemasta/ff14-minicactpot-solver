@@ -1,5 +1,5 @@
 # MiniCactpot Solver
-This is a solver/assistant program for the MiniCactpot lottery minigame in Final Fantasy 14. The goal of this program is to maximize a players winnings by providing a series of play suggestions along with some basic probability imformation.
+This is a solver/assistant program for the MiniCactpot lottery minigame in Final Fantasy 14. The goal of this program is to maximize a players winnings by providing a series of play suggestions along with some basic probability imformation. It has only been tested on Windows 7.
 
 ## Using the solver in-game
 By default, the solver is set to be an "Always on top" window. It will happily sit on top of the Final Fantasy 14 game client during use, as long as the client's screen mode is not set to fullscreen. You can change this by hitting Escape and opening System Configuration. The screen mode settings are in the Display Settings tab, and should be set to Borderless Windowed while using the solver. Windowed mode will work as well.
