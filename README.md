@@ -33,4 +33,5 @@ The algorithm responsible for determining play suggestions when chasing the Cact
 ## Notes
 
 * The solver will silently prevent you from making illegal moves, or entering more than 4 total plays.
+
 * Sometimes the solver will highlight multiple play spots during a single round. All suggestions in the set can be considered to be equivalent with respect to payout chances.
