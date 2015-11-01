@@ -10,17 +10,23 @@ If you usually play with your game display set to Fullscreen, set it to Windowed
 
 You can change this by hitting Escape, ...
 
-## Controls
-
-Input your plays into the solver by hovering your mouse over a play spot and typing a number. Use 0 to reset a play spot.
-
-Press the Space bar to reset all play spots.
+Upon entering the initial number, the solver will highlight one or more play spots with a light blue circle. While the user may play any spot they like it is highly recommended to play highlighted spots, especially if the Cactpot Status indicator is still green. It's worth noting here that if you always follow the solver's suggestions, you will _always_ win the Cactpot if it is possible to do so.
 
 After 4 plays have been entered (the initial number plus 3 user plays) the solver will suggest a pay line.
 
+## Controls
+
+The solver receives input via hovering the mouse over a play spot and typing a number **1-9**.
+
+Use **0** to reset a play spot.
+
+Press the **Space bar** to reset all play spots.
+
+Press **Escape** to exit the program.
+
 ## Special Features
 
-##### Cactpot Status Light
+##### Cactpot Status indicator
 The Cactpot Status light in the bottom right of the solver window indicates whether or not it's still possible to win the Cactpot given the current plays. If the light is red, the solver will try to direct you towards the play line with highest payout potential.
 
 ##### Payout Chances (by line)
