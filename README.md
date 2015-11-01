@@ -1,14 +1,10 @@
 # MiniCactpot Solver
-This is a solver/assistant program for the MiniCactpot lottery minigame in Final Fantasy 14. Input the initial number from a MiniCactpot card and the program will suggest a series of plays towards winning the Cactpot.
-
-The goal of this program is to maximize a players winnings by providing play suggestions along with some basic probability imformation.
+This is a solver/assistant program for the MiniCactpot lottery minigame in Final Fantasy 14. The goal of this program is to maximize a players winnings by providing a series of play suggestions along with some basic probability imformation.
 
 ## Using the solver in-game
-If you usually play with your game display set to Fullscreen, set it to Windowed Maximized so that MiniCactpot Solver will remain visible on top of your game.
+By default, the solver is set to be an "Always on top" window. It will happily sit on top of the Final Fantasy 14 game client during use, as long as the client's screen mode is not set to fullscreen. You can change this by hitting Escape and opening System Configuration. The screen mode settings are in the Display Settings tab, and should be set to Borderless Windowed while using the solver. Windowed mode will work as well.
 
-You can change this by hitting Escape, ...
-
-Upon entering the initial number, the solver will highlight one or more play spots with a light blue circle. While the user may then play any spot they like it is highly recommended to play highlighted spots, especially if the Cactpot Status indicator is still green. It's worth noting here that if you always follow the solver's suggestions, you will _always_ win the Cactpot if it is possible to do so.
+Upon entering the initial number, the solver will highlight one or more play spots with a light blue circle. While the user may then play any spot they like it is highly recommended to play highlighted spots, especially if the Cactpot Status indicator is still green.
 
 After 4 plays have been entered (the initial number plus 3 user plays) the solver will suggest a pay line.
 
@@ -31,6 +27,9 @@ The Cactpot Status light in the bottom right of the solver window indicates whet
 ##### Payout Chances (by line)
 Hovering over a pay line arrow will cause the percent chances of winning each payout amount to display in the table on the right-hand side of the card.
   
+## Cactpot Efficacy
+The algorithm responsible for determining play suggestions when chasing the Cactpot does so by attempting to 'trap' it. In other words, it seeks to eliminate the Cactpot as a potential outcome on any play line as soon as possible. In every case, after 3 rounds of playing the solver's suggested play spots, there will only be *at most* a single play line that can still potentially be a Cactpot winner. What this means is that the solver will *always* lead the user to win the Cactpot payout, if it is possible to do so on the current ticket.
+
 ## Notes
 
 * The solver will silently prevent you from making illegal moves, or entering more than 4 total plays.
