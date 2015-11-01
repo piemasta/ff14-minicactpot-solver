@@ -6,7 +6,7 @@ By default, the solver is set to be an "Always on top" window. It will happily s
 
 Upon entering the initial number, the solver will highlight one or more play spots with a light blue circle. While the user may then play any spot they like it is highly recommended to play highlighted spots, especially if the Cactpot Status indicator is still green.
 
-After 4 plays have been entered (the initial number plus 3 user plays) the solver will suggest a pay line.
+After 4 plays have been entered (the initial number plus 3 user plays) the solver will suggest a pay line with a glowing pay line arrow.
 
 ## Controls
 While the mouse is hovering over a play spot:
