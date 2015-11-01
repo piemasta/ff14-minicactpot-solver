@@ -118,7 +118,7 @@ namespace MiniCactpotSolver
                 arrows[x].Size = new Size(28, 28);
                 arrows[x].BackColor = Color.Transparent;                
                 arrows[x].TabStop = false;
-                arrows[x].Name = ((char)x)+ "";
+                arrows[x].Name = ((char)(x + arrowOffset))+ "";     //
                 arrows[x].Tag = -1;
                 arrows[x].Image = arrows_default[x];
                 arrows[x].MouseEnter += new EventHandler(Arrow_MouseEnter);

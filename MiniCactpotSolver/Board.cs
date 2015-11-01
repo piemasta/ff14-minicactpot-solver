@@ -36,6 +36,7 @@ namespace MiniCactpotSolver
     {
         #region Definitions
         private int mouseOver = 0;
+        private int arrowOffset = 9;
         private int tilesRegistered = 0;
         private bool user_revealed_tile = false;
         private bool user_covered_tile = false;
@@ -288,20 +289,20 @@ namespace MiniCactpotSolver
             if (tilesRegistered > 0)
             {
                 int index = (int)(((Control)sender).Name[0]);
-                payout_chances = p.GetPayoutChances(index);
-                mouseOver = index;
+                payout_chances = p.GetPayoutChances(index - arrowOffset);
+                mouseOver = index - arrowOffset;
                 show_odds = true;
                 this.Invalidate(new Rectangle(new Point(248, 86), new Size(36, 190)));
                 this.Invalidate(new Rectangle(new Point(388, 86), new Size(36, 190)));
-                if (arrows[index].Image == arrows_active[index]) reactivate_arrow = true;
-                arrows[index].Image = arrows_selected[index];
+                if (arrows[index - arrowOffset].Image == arrows_active[index - arrowOffset]) reactivate_arrow = true;
+                arrows[index - arrowOffset].Image = arrows_selected[index - arrowOffset];
             }
         }
         private void Arrow_MouseLeave(object sender, EventArgs e)
         {
             mouseOver = -1;
             show_odds = false;
-            int index = (int)(((Control)sender).Name[0]);
+            int index = (int)(((Control)sender).Name[0]) - arrowOffset;
             if (reactivate_arrow && (arrows[index].Image == arrows_selected[index]))
                 arrows[index].Image = arrows_active[index];
             else if (arrows[index].Image == arrows_selected[index])
