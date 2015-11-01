@@ -20,11 +20,11 @@ After 4 plays have been entered (the initial number plus 3 user plays) the solve
 
 ## Special Features
 
-  ### Cactpot Status Light
-  The Cactpot Status light in the bottom right of the solver window indicates whether or not it's still possible to win the Cactpot given the current plays. If the light is red, the solver will try to direct you towards the play line with highest payout potential.
+### Cactpot Status Light
+The Cactpot Status light in the bottom right of the solver window indicates whether or not it's still possible to win the Cactpot given the current plays. If the light is red, the solver will try to direct you towards the play line with highest payout potential.
 
-  ### Payout Chances (by line)
-  Hovering over a pay line arrow will cause the percent chances of winning each payout amount to display on the right-hand side of the card.
+### Payout Chances (by line)
+Hovering over a pay line arrow will cause the percent chances of winning each payout amount to display on the right-hand side of the card.
   
 ## Notes
 
