@@ -6,7 +6,7 @@ The goal of this program is to maximize a players winnings by providing play sug
 
 ## Using the solver in-game
 
-If you usually play with your game display set to Fullscreen, set it to Windowed Maximized so that MiniCactpot Solver will remain visible on top of your game. Otherwise you will need to minimize your game in between plays.
+If you usually play with your game display set to Fullscreen, set it to Windowed Maximized so that MiniCactpot Solver will remain visible on top of your game.
 
 You can change this by hitting Escape, ...
 
@@ -20,10 +20,10 @@ After 4 plays have been entered (the initial number plus 3 user plays) the solve
 
 ## Special Features
 
-### Cactpot Status Light
+##### Cactpot Status Light
 The Cactpot Status light in the bottom right of the solver window indicates whether or not it's still possible to win the Cactpot given the current plays. If the light is red, the solver will try to direct you towards the play line with highest payout potential.
 
-### Payout Chances (by line)
+##### Payout Chances (by line)
 Hovering over a pay line arrow will cause the percent chances of winning each payout amount to display on the right-hand side of the card.
   
 ## Notes
