@@ -39,6 +39,7 @@ namespace MiniCactpotSolver
         private int[] payout_chances;
 
         private Predictor p;
+        private Graphics g;
 
         #region Imported Functions
         private const int WM_NCLBUTTONDOWN = 0xA1;
@@ -55,6 +56,7 @@ namespace MiniCactpotSolver
         {
             InitializeComponent();
             AddAllEventHandlers();
+            g = this.CreateGraphics();
             p = new Predictor(ref tiles);
         }
 
@@ -102,7 +104,7 @@ namespace MiniCactpotSolver
         {
             for (int x = 0; x < 9; x++)
             {
-                if (tiles[x].Image == prediction)
+                if (tiles[x].Image == prediction || tiles[x].Image == prediction_active)
                     tiles[x].Image = blank;
             }
         }
@@ -142,7 +144,7 @@ namespace MiniCactpotSolver
                 return;
 
             ClearPredictionOverlays();
-            if (tiles[tileIndex].Image != blank)
+            if (tiles[tileIndex].Image != blank && tiles[tileIndex].Image != blank_active)
             {
                 if (!SanityCheck((int)tiles[tileIndex].Tag, 0, 8))
                     return;
@@ -169,7 +171,7 @@ namespace MiniCactpotSolver
                 return;
 
             ClearPredictionOverlays();
-            if (tiles[tileIndex].Image == blank)
+            if (tiles[tileIndex].Image == blank || tiles[tileIndex].Image == blank_active)
             {
                 if (block_new_tiles)
                     return;
@@ -219,8 +221,8 @@ namespace MiniCactpotSolver
             }
             for (int x = 0; x < 8; x++)
             {
-                this.arrows[x].MouseEnter += new System.EventHandler(this.Tile_MouseEnter);
-                this.arrows[x].MouseLeave += new System.EventHandler(this.Tile_MouseLeave);
+                this.arrows[x].MouseEnter += new System.EventHandler(this.Arrow_MouseEnter);
+                this.arrows[x].MouseLeave += new System.EventHandler(this.Arrow_MouseLeave);
             }
         }      
         private void InitializeEventHandlers()
@@ -233,7 +235,7 @@ namespace MiniCactpotSolver
         {
             this.KeyDown -= new System.Windows.Forms.KeyEventHandler(this.Board_KeyDown);
             this.KeyPress -= new System.Windows.Forms.KeyPressEventHandler(this.Board_KeyPress);
-            UserAction -= Board_UserAction;
+            this.UserAction -= Board_UserAction;
             for (int x = 0; x < 9; x++)
             {
                 this.tiles[x].MouseEnter -= new System.EventHandler(this.Tile_MouseEnter);
@@ -241,8 +243,8 @@ namespace MiniCactpotSolver
             }
             for (int x = 0; x < 8; x++)
             {
-                this.arrows[x].MouseEnter -= new System.EventHandler(this.Tile_MouseEnter);
-                this.arrows[x].MouseLeave -= new System.EventHandler(this.Tile_MouseLeave);
+                this.arrows[x].MouseEnter -= new System.EventHandler(this.Arrow_MouseEnter);
+                this.arrows[x].MouseLeave -= new System.EventHandler(this.Arrow_MouseLeave);
             }
         }
         private bool SanityCheck(int check, int low, int high)
@@ -278,20 +280,21 @@ namespace MiniCactpotSolver
             if (tilesRegistered > 0)
             {
                 int index = (int)(((Control)sender).Name[0]);
-                payout_chances = p.GetPayoutChances(index - arrowOffset);
-                mouseOver = index - arrowOffset;
+                payout_chances = p.GetPayoutChances(index);
+                mouseOver = index;
                 show_odds = true;
                 this.Invalidate(new Rectangle(new Point(248, 86), new Size(36, 190)));
                 this.Invalidate(new Rectangle(new Point(388, 86), new Size(36, 190)));
-                if (arrows[index - arrowOffset].Image == arrows_active[index - arrowOffset]) reactivate_arrow = true;
-                arrows[index - arrowOffset].Image = arrows_selected[index - arrowOffset];
+                if (arrows[index].Image == arrows_active[index])
+                    reactivate_arrow = true;
+                arrows[index].Image = arrows_selected[index];
             }
         }
         private void Arrow_MouseLeave(object sender, EventArgs e)
         {
             mouseOver = -1;
             show_odds = false;
-            int index = (int)(((Control)sender).Name[0]) - arrowOffset;
+            int index = (int)(((Control)sender).Name[0]);
             if (reactivate_arrow && (arrows[index].Image == arrows_selected[index]))
                 arrows[index].Image = arrows_active[index];
             else if (arrows[index].Image == arrows_selected[index])
@@ -429,10 +432,42 @@ namespace MiniCactpotSolver
         private void Tile_MouseEnter(object sender, EventArgs e)
         {
             mouseOver = (int)(((Control)sender).Name[0]);
+            
+            if(((PictureBox)sender).Image == blank)
+                ((PictureBox)sender).Image = blank_active;            
+            else if(((PictureBox)sender).Image == prediction)
+                ((PictureBox)sender).Image = prediction_active;            
+            else
+            {
+                for(int x = 0; x < 9; x++)
+                {
+                    if(((PictureBox)sender).Image == numbers[x])
+                    {
+                        ((PictureBox)sender).Image = numbers_active[x];
+                        break;
+                    }
+                }
+            }
         }
         private void Tile_MouseLeave(object sender, EventArgs e)
         {
             mouseOver = -1;
+
+            if (((PictureBox)sender).Image == blank_active)
+                ((PictureBox)sender).Image = blank;
+            else if (((PictureBox)sender).Image == prediction_active)
+                ((PictureBox)sender).Image = prediction;
+            else
+            {
+                for (int x = 0; x < 9; x++)
+                {
+                    if (((PictureBox)sender).Image == numbers_active[x])
+                    {
+                        ((PictureBox)sender).Image = numbers[x];
+                        break;
+                    }
+                }
+            }
         }
         #endregion
     }

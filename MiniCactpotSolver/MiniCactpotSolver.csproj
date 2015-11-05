@@ -108,6 +108,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\number_4_active.png" />
+    <None Include="Resources\number_3_active.png" />
+    <None Include="Resources\number_2_active.png" />
+    <None Include="Resources\number_1_active.png" />
+    <None Include="Resources\blank_predicted_active.png" />
+    <None Include="Resources\blank_active.png" />
+    <None Include="Resources\number_9_active.png" />
+    <None Include="Resources\number_8_active.png" />
+    <None Include="Resources\number_7_active.png" />
+    <None Include="Resources\number_6_active.png" />
+    <None Include="Resources\number_5_active.png" />
     <None Include="Resources\arrow_down_default.png" />
     <None Include="Resources\arrow_right_default.png" />
     <None Include="Resources\light_green.png" />

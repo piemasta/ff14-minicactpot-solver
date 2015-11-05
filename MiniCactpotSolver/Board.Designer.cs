@@ -14,7 +14,9 @@ namespace MiniCactpotSolver
         private Bitmap light_green = Resources.light_green;
 
         private Bitmap blank = Resources.blank_default;
+        private Bitmap blank_active = Resources.blank_active;
         private Bitmap prediction = Resources.blank_predicted;
+        private Bitmap prediction_active = Resources.blank_predicted_active;
         private Bitmap background = Resources.board_background;
 
         private Bitmap close_default = Resources.button_close_default;
@@ -24,6 +26,10 @@ namespace MiniCactpotSolver
         private Bitmap[] numbers = { Resources.number_1_default, Resources.number_2_default, Resources.number_3_default, Resources.number_4_default,
                                      Resources.number_5_default, Resources.number_6_default, Resources.number_7_default, Resources.number_8_default,
                                      Resources.number_9_default };
+
+        private Bitmap[] numbers_active = { Resources.number_1_active, Resources.number_2_active, Resources.number_3_active, Resources.number_4_active,
+                                            Resources.number_5_active, Resources.number_6_active, Resources.number_7_active, Resources.number_8_active,
+                                            Resources.number_9_active };
 
         private Bitmap[] arrows_default = { Resources.arrow_right_default, Resources.arrow_right_default, Resources.arrow_right_default,
                                             Resources.arrow_down_default,  Resources.arrow_down_default,  Resources.arrow_down_default, 
@@ -109,7 +115,7 @@ namespace MiniCactpotSolver
                 arrows[x].Size = new Size(28, 28);
                 arrows[x].BackColor = Color.Transparent;                
                 arrows[x].TabStop = false;
-                arrows[x].Name = ((char)(x + arrowOffset))+ "";     //
+                arrows[x].Name = ((char)x) + "";
                 arrows[x].Tag = -1;
                 arrows[x].Image = arrows_default[x];
                 arrows[x].MouseEnter += new EventHandler(Arrow_MouseEnter);
