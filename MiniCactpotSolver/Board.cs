@@ -281,7 +281,7 @@ namespace MiniCactpotSolver
             {
                 int index = (int)(((Control)sender).Name[0]);
                 payout_chances = p.GetPayoutChances(index);
-                mouseOver = index;
+                mouseOver = index + arrowOffset;
                 show_odds = true;
                 this.Invalidate(new Rectangle(new Point(248, 86), new Size(36, 190)));
                 this.Invalidate(new Rectangle(new Point(388, 86), new Size(36, 190)));
