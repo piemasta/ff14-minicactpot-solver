@@ -20,7 +20,8 @@ namespace MiniCactpotSolver
         private int[][] row;            //row length (8)
 
         private int values_count = 0;
-        private bool cactpot_preferred = false;        
+        private bool cactpot_preferred = false;
+        private int cactpot_preferred_index = 0;    
         private static int gridLength = 9;
         private static int rowLength = 8;
 
@@ -169,15 +170,6 @@ namespace MiniCactpotSolver
                 for (int x = 0; x < payout_count; x++)
                     selection_indices[x] = highest_payout_indices[x];
 
-                #region Output
-                //String str = "Line Payout Scores:\n";
-                //for (int x = 0; x < rowLength; x++)
-                //{
-                //    str += "Row " + x + ": \t" + row_payout_scores[x] + "\n";
-                //}
-                //MessageBox.Show(str);
-                #endregion
-
                 return selection_indices;
                 #endregion
             }
@@ -192,6 +184,11 @@ namespace MiniCactpotSolver
 
             if (cactpot_possible && cactpot_preferred)
             {
+                //Explicitly suggest to fill in a row with two uncovered cactpot numbers, disregarding highest potential.
+                candidate_indices[candidate_count] = cactpot_preferred_index;
+                candidate_count++;
+
+                /*
                 for (int x = 0; x < gridLength; x++)
                 {
                     if (pots[x] > highest_potential)
@@ -205,9 +202,11 @@ namespace MiniCactpotSolver
                         candidate_count++;
                     }
                 }
-            }
-            #region Selection Loops
+                */
+
+            }            
             else
+            #region Selection Loops
             {
                 for (int x = 0; x < gridLength; x++)
                 {
@@ -371,10 +370,14 @@ namespace MiniCactpotSolver
                     else if (!HasDifferenceOfTwo(x[0], x[1]) && !HasDifferenceOfTwo(y[0], y[1])) //neither component has a difference of two
                         return false;
                     else
-                        MessageBox.Show("Unhandled case: (count == 2) values_count > 2\nProceeding with default values.");
+                        MessageBox.Show("Unhandled case: ICP_VC2\nProceeding with default values.");
 
-                    if (IsEmpty(grid[temp_index])) return true;
-                    else return false;
+                    if (IsEmpty(grid[temp_index]))
+                    {
+                        cactpot_preferred_index = temp_index;
+                        return true;
+                    }
+                    else return false;                    
                 }
                 #endregion //values_count > 2
                 #region values_count <= 2
@@ -416,7 +419,6 @@ namespace MiniCactpotSolver
 
                         else //they are kitty corner
                             return false;
-
                     }
                 }
                 #endregion //values_count <= 2
